@@ -4,214 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sambhav Portfolio</title>
-<style>
-    *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
 
-body{
-    background:#0a0a0a;
-    color:white;
-}
+<link rel="stylesheet" href="style.css">
 
-/* NAVBAR */
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 60px;
-    background:#0d0d0d;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-nav h2{
-    font-size:32px;
-}
-
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:30px;
-}
-
-nav ul li a{
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-}
-
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
-
-.hero h1{
-    font-size:64px;
-    margin-bottom:20px;
-}
-
-.hero p{
-    font-size:24px;
-    color:#bbb;
-    margin-bottom:30px;
-}
-
-/* BUTTON */
-button{
-    padding:15px 35px;
-    font-size:18px;
-    border:none;
-    border-radius:10px;
-    background:linear-gradient(90deg,purple,magenta);
-    color:white;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.08);
-}
-
-/* SECTIONS */
-section{
-    padding:80px 60px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:48px;
-    margin-bottom:40px;
-}
-
-/* VIDEO GRID */
-.video-grid-short,
-.video-grid-long{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-}
-
-.short-card,
-.long-card{
-    background:#111;
-    padding:15px;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(255,0,255,0.15);
-}
-
-.short-card{
-    width:280px;
-}
-
-.long-card{
-    width:450px;
-}
-
-.short-card video{
-    width:100%;
-    height:500px;
-    object-fit:cover;
-    border-radius:15px;
-}
-
-.long-card video{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:15px;
-}
-
-/* ABOUT */
-.about{
-    text-align:center;
-    max-width:900px;
-    margin:auto;
-    font-size:22px;
-    line-height:1.8;
-    color:#ccc;
-}
-
-/* FOOTER */
-footer{
-    background:#0d0d0d;
-    text-align:center;
-    padding:25px;
-    color:#777;
-}
-
-/* 📱 MOBILE */
-@media (max-width:768px){
-
-    nav{
-        flex-direction:column;
-        gap:15px;
-        padding:15px 20px;
-    }
-
-    nav ul{
-        flex-direction:column;
-        gap:10px;
-    }
-
-    section{
-        padding:60px 20px;
-    }
-
-    .section-title{
-        font-size:28px;
-    }
-
-    .hero h1{
-        font-size:36px;
-    }
-
-    .hero p{
-        font-size:18px;
-    }
-
-    .short-card video{
-        height:320px;
-    }
-
-    .long-card video{
-        height:180px;
-    }
-
-    .about{
-        font-size:16px;
-    }
-}
-
-/* SMALL MOBILE */
-@media (max-width:480px){
-
-    nav h2{
-        font-size:22px;
-    }
-
-    .short-card video{
-        height:260px;
-    }
-
-    .long-card video{
-        height:160px;
-    }
-}
-</style>
 </head>
 <body>
+
+<!-- NAVBAR -->
 <nav>
     <h2>Sambhav</h2>
     <ul>
@@ -221,19 +20,21 @@ footer{
     </ul>
 </nav>
 
-<section style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px;">
-    <h1 style="font-size:64px; margin-bottom:20px;">Hello, I'm Sambhav Gulani</h1>
-    <p style="font-size:24px; color:#bbb; margin-bottom:30px;">Professional Video Editor</p>
-    <button onclick="document.getElementById('short').scrollIntoView({behavior:'smooth'})" 
-        style="padding:15px 35px; font-size:18px; border:none; border-radius:10px; background:linear-gradient(90deg,purple,magenta); color:white; cursor:pointer;">
+<!-- HERO -->
+<section class="hero">
+    <h1>Hello, I'm Sambhav Gulani</h1>
+    <p>Professional Video Editor</p>
+    <button onclick="document.getElementById('short').scrollIntoView({behavior:'smooth'})">
         View My Work
     </button>
 </section>
 
+<!-- SHORT VIDEOS -->
 <section id="short">
     <h1 class="section-title">SHORT VIDEOS</h1>
 
     <div class="video-grid-short">
+
         <div class="short-card">
             <video controls>
                 <source src="videos/reel.mp4" type="video/mp4">
@@ -251,13 +52,16 @@ footer{
                 <source src="videos/kuldeep client.mp4" type="video/mp4">
             </video>
         </div>
+
     </div>
 </section>
 
+<!-- LONG VIDEOS -->
 <section id="long">
     <h1 class="section-title">LONG VIDEOS</h1>
 
     <div class="video-grid-long">
+
         <div class="long-card">
             <video controls>
                 <source src="videos/VFX.mp4" type="video/mp4">
@@ -269,18 +73,22 @@ footer{
                 <source src="videos/zinda.mp4" type="video/mp4">
             </video>
         </div>
+
         <div class="long-card">
             <video controls>
                 <source src="videos/documentart.mp4" type="video/mp4">
             </video>
         </div>
+
     </div>
 </section>
 
+<!-- ANIMATIONS -->
 <section id="animation">
     <h1 class="section-title">ANIMATIONS</h1>
 
     <div class="video-grid-long">
+
         <div class="long-card">
             <video controls>
                 <source src="videos/Motivation.mp4" type="video/mp4">
@@ -292,15 +100,17 @@ footer{
                 <source src="videos/Landslide.mp4" type="video/mp4">
             </video>
         </div>
-          <div class="video-grid-long">
+
         <div class="long-card">
             <video controls>
                 <source src="videos/balloon.mp4" type="video/mp4">
             </video>
         </div>
+
     </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
     <h1 class="section-title">ABOUT ME</h1>
     <p class="about">
@@ -309,6 +119,7 @@ footer{
     </p>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
     <h1 class="section-title">CONTACT</h1>
     <p class="about">
@@ -319,6 +130,7 @@ footer{
     </p>
 </section>
 
+<!-- FOOTER -->
 <footer>
     © 2026 Sambhav Portfolio | All Rights Reserved
 </footer>
