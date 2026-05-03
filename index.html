@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sambhav Portfolio</title>
 
-<!-- GOOGLE FONTS -->
+<!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
@@ -13,44 +13,48 @@
 
 <body>
 
-<nav>
-    <h2>Sambhav</h2>
+<!-- NAV -->
+<nav class="nav">
+    <h2 class="logo">Sambhav</h2>
 
     <div class="menu-toggle" id="menu-toggle">☰</div>
 
-    <ul id="nav-links">
-        <li><a href="#short">Portfolio</a></li>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#short">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
     <h1>I turn raw footage into videos people actually watch.</h1>
-    <p>Professional Video Editor</p>
-    <button onclick="scrollToWork()">View My Work</button>
+    <p>High-retention edits for reels, ads & content creators</p>
+    <button onclick="scrollToWork()">View Work</button>
 </section>
 
+<!-- VIDEOS -->
 <section id="short">
-    <h1 class="section-title">SHORT VIDEOS</h1>
+    <h1 class="section-title">Selected Work</h1>
+
     <div class="video-grid">
 
         <div class="card">
-            <video controls controlsList="nodownload" oncontextmenu="return false;">
+            <video muted loop controls controlsList="nodownload" oncontextmenu="return false;">
                 <source src="videos/reel.mp4" type="video/mp4">
             </video>
-            <p class="video-title">Instagram Reel Edit</p>
+            <p class="video-title">Instagram Reel • High Engagement</p>
         </div>
 
         <div class="card">
-            <video controls controlsList="nodownload" oncontextmenu="return false;">
+            <video muted loop controls controlsList="nodownload" oncontextmenu="return false;">
                 <source src="videos/MAHEK.mp4" type="video/mp4">
             </video>
-            <p class="video-title">Cinematic Reel</p>
+            <p class="video-title">Cinematic Edit</p>
         </div>
 
         <div class="card">
-            <video controls controlsList="nodownload" oncontextmenu="return false;">
+            <video muted loop controls controlsList="nodownload" oncontextmenu="return false;">
                 <source src="videos/kuldeep client.mp4" type="video/mp4">
             </video>
             <p class="video-title">Client Work</p>
@@ -59,26 +63,28 @@
     </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-    <h1 class="section-title">ABOUT ME</h1>
+    <h1 class="section-title">About</h1>
     <p class="about">
-        I specialize in cinematic edits, reels, gaming montages, and high-retention content editing.
+        I help creators and brands turn raw footage into engaging content that keeps viewers hooked.
     </p>
 </section>
 
-<section id="contact">
-    <h1 class="section-title">CONTACT</h1>
-    <p class="about">
-        Email: gulanisambhav20@gmail.com<br>
-        Instagram: @sambhav_gulani
-    </p>
+<!-- CTA -->
+<section class="cta">
+    <h2>Need edits that actually perform?</h2>
+    <p>Let’s work together.</p>
+    <a href="https://instagram.com/" target="_blank">
+        <button>Contact Me</button>
+    </a>
 </section>
 
+<!-- FOOTER -->
 <footer>
     © 2026 Sambhav Portfolio
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
