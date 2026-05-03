@@ -1,58 +1,124 @@
-/* 📱 MOBILE */
-@media (max-width:1080px){
-
-    nav{
-        flex-direction:column;
-        gap:15px;
-        padding:15px 20px;
-    }
-
-    nav ul{
-        flex-direction:column;
-        gap:10px;
-    }
-
-    section{
-        padding:60px 20px;
-    }
-
-    .section-title{
-        font-size:28px;
-    }
-
-    .hero h1{
-        font-size:36px;
-    }
-
-    .hero p{
-        font-size:18px;
-    }
-
-    .short-card video{
-        height:320px;
-    }
-
-    .long-card video{
-        height:180px;
-    }
-
-    .about{
-        font-size:16px;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* SMALL MOBILE */
-@media (max-width:480px){
+body {
+    background: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
 
-    nav h2{
-        font-size:22px;
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px clamp(20px, 5vw, 80px);
+    background: #0d0d0d;
+    position: sticky;
+    top: 0;
+}
+
+nav h2 {
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 6vw, 64px);
+    text-align: center;
+}
+
+.hero p {
+    font-size: clamp(16px, 3vw, 24px);
+    color: #bbb;
+    margin: 20px 0;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: clamp(14px, 2vw, 18px);
+    border-radius: 10px;
+    background: linear-gradient(90deg, purple, magenta);
+    border: none;
+    cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px clamp(20px, 5vw, 80px);
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(26px, 5vw, 48px);
+    margin-bottom: 40px;
+}
+
+/* GRID FIX */
+.video-grid-short,
+.video-grid-long {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* CARDS */
+.short-card,
+.long-card {
+    background: #111;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+/* VIDEO FIX (IMPORTANT) */
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* ABOUT */
+.about {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-size: clamp(14px, 2vw, 20px);
+    line-height: 1.6;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .short-card video{
-        height:260px;
-    }
-
-    .long-card video{
-        height:160px;
+    nav ul {
+        flex-direction: column;
+        align-items: center;
     }
 }
