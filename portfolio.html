@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sambhav Gulani – Video Editor, Motion Designer, 3D Artist</title>
+<meta name="description" content="Video editor, motion designer and 3D artist crafting cinematic visuals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --bg2:#0b0b0b;
+  --glass:rgba(255,255,255,.08); --border:rgba(255,255,255,.15);
+  --accent:#00e5ff; --text:#f2f4f7; --muted:#9ba3b0;
+  --head:"Clash Display","Plus Jakarta Sans",system-ui,sans-serif;
+  --body:"General Sans",Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --pad:100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 1.05rem/1.7 var(--body);overflow-x:hidden;position:relative}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* background: glow + grid + noise + mouse light */
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+   radial-gradient(900px 600px at 85% 5%,rgba(0,229,255,.13),transparent 60%),
+   radial-gradient(700px 500px at 5% 55%,rgba(0,229,255,.06),transparent 60%),
+   linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/64px 64px,
+   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/64px 64px,
+   linear-gradient(var(--bg),var(--bg2))}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#glow{position:fixed;width:520px;height:520px;left:0;top:0;z-index:-1;pointer-events:none;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,229,255,.09),transparent 65%);transform:translate(-50%,-50%)}
+
+.wrap{max-width:1400px;margin:0 auto;padding:0 var(--pad)}
+.in{max-width:1200px;margin:0 auto}
+section{padding:135px 0}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4.5vw,3.4rem);margin-bottom:16px}
+.tag{font:500 .8rem var(--mono);color:var(--accent);margin-bottom:16px;display:block}
+.lead{color:var(--muted);max-width:52ch;margin-bottom:56px}
+
+/* glass */
+.glass{background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:30px;
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 12px 40px rgba(0,0,0,.35);
+  transition:transform .3s ease,border-color .3s ease}
+.lift:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.4)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;font-weight:500;cursor:pointer;border:1px solid var(--border);color:var(--text);background:var(--glass);backdrop-filter:blur(20px);transition:transform .25s,box-shadow .25s}
+.btn.primary{background:var(--accent);color:#031417;border-color:var(--accent);font-weight:600}
+.btn:hover{transform:scale(1.04);box-shadow:0 0 28px rgba(0,229,255,.35)}
+
+/* nav */
+header{position:fixed;top:16px;left:0;right:0;z-index:10;padding:0 20px}
+.nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 28px;border-radius:999px}
+.logo{font:700 1.25rem var(--head)}
+.logo b{color:var(--accent)}
+.nav ul{display:flex;gap:32px;list-style:none;color:var(--muted)}
+.nav ul a:hover{color:var(--text)}
+.nav .btn{padding:10px 22px}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px}
+.hero .in{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+h1{font-size:clamp(3rem,7vw,5.6rem);font-weight:700;margin-bottom:20px}
+.roles{font:500 .9rem var(--mono);color:var(--accent);display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px}
+.hero p.sub{color:var(--muted);font-size:1.2rem;max-width:34ch;margin-bottom:36px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.visual{position:relative;aspect-ratio:4/5;max-width:420px;justify-self:center;width:100%}
+.portrait{position:absolute;inset:0;border-radius:28px;border:1px solid var(--border);display:grid;place-items:center;color:var(--muted);
+  background:radial-gradient(circle at 50% 30%,rgba(0,229,255,.22),transparent 60%),linear-gradient(160deg,#141a20,#0a0c0f)}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:18px;font-size:.9rem;animation:float 7s ease-in-out infinite}
+.chip svg{color:var(--accent)}
+.c1{top:8%;left:-14%}.c2{top:46%;right:-12%;animation-delay:-2s}.c3{bottom:8%;left:-8%;animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+.about .portrait{position:relative;aspect-ratio:4/5;inset:auto}
+.about p{color:var(--muted);margin-bottom:18px}
+.tl{margin-top:36px;border-left:1px solid var(--border);padding-left:24px}
+.tl div{position:relative;margin-bottom:20px}
+.tl div::before{content:"";position:absolute;left:-29px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.tl span{font:400 .8rem var(--mono);color:var(--accent)}
+.tl p{color:var(--text);margin:0}
+
+/* grids */
+.grid{display:grid;gap:28px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid .glass svg.i{color:var(--accent);margin-bottom:18px;width:28px;height:28px}
+.glass h3{font-size:1.3rem;margin-bottom:8px}
+.glass p{color:var(--muted);font-size:.98rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px}
+.sk{display:flex;justify-content:space-between;font-size:.95rem;margin-bottom:8px}
+.sk span:last-child{font-family:var(--mono);color:var(--muted)}
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:9px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.on .bar i{width:var(--w)}
+
+/* projects */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.filters button{font:inherit;font-size:.9rem;color:var(--muted);padding:9px 20px;border-radius:999px;background:var(--glass);border:1px solid var(--border);cursor:pointer;transition:.25s}
+.filters button:hover{color:var(--text)}
+.filters button.active{background:var(--accent);color:#031417;border-color:var(--accent)}
+.pgrid{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.proj{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.proj.hide{display:none}
+.thumb{aspect-ratio:16/9;background-size:cover;background-position:center}
+.pbody{padding:30px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cat{font:500 .75rem var(--mono);color:var(--accent)}
+.pbody h3{font-size:1.4rem;margin:0}
+.sw{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.sw span{font:400 .72rem var(--mono);padding:4px 10px;border-radius:99px;border:1px solid var(--border);color:var(--muted)}
+.pbody .btn{align-self:flex-start;margin-top:auto;padding:10px 22px}
+
+/* workflow */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.step{padding:24px 18px;text-align:center;position:relative}
+.step b{display:block;font:500 .8rem var(--mono);color:var(--accent);margin-bottom:8px}
+.step h3{font-size:1.05rem;margin:0}
+.step:not(:last-child)::after{content:"";position:absolute;right:-17px;top:50%;width:18px;height:1px;background:var(--border)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center}
+.stats b{display:block;font:700 3rem var(--head);color:var(--accent);line-height:1}
+.stats span{font:400 .85rem var(--mono);color:var(--muted)}
+
+/* testimonials */
+.quote p{color:var(--text);font-size:1.02rem;margin-bottom:22px}
+.quote small{font:400 .82rem var(--mono);color:var(--muted)}
+
+/* contact */
+.contact .glass{text-align:center;padding:72px 30px;border-radius:28px}
+.contact h2{font-size:clamp(2.2rem,5vw,4rem)}
+.contact .mail{font:500 clamp(1.1rem,2.5vw,1.6rem) var(--mono);color:var(--accent);display:block;margin:16px 0 32px}
+.socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.socials a{display:flex;align-items:center;gap:8px;color:var(--muted);padding:10px 18px;border-radius:99px;border:1px solid var(--border)}
+.socials a:hover{color:var(--text);border-color:var(--accent)}
+footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.88rem;border-top:1px solid var(--border)}
+
+/* blur reveal */
+.rv{opacity:0;filter:blur(10px);transform:translateY(24px);transition:opacity .9s ease,filter .9s ease,transform .9s ease}
+.rv.on{opacity:1;filter:none;transform:none}
+
+@media (max-width:1024px){
+  :root{--pad:40px}
+  .hero .in,.about{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .step::after{display:none}
+  .nav ul{display:none}
+  .c1{left:0}.c2{right:0}.c3{left:0}
+}
+@media (max-width:600px){
+  :root{--pad:20px}
+  section{padding:90px 0}
+  .flow{grid-template-columns:1fr 1fr}
+  .pgrid{grid-template-columns:1fr}
+  .nav{padding-left:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .chip{animation:none}.rv{opacity:1;filter:none;transform:none;transition:none}.bar i{transition:none}html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+
+<header>
+  <nav class="nav glass" style="padding:12px 14px 12px 28px;border-radius:999px">
+    <a class="logo" href="#home">Sambhav<b>.</b></a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn primary" href="#contact">Hire Me</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap" style="width:100%"><div class="in">
+    <div>
+      <h1>Sambhav Gulani</h1>
+      <div class="roles"><span>Video Editor</span><span>Motion Designer</span><span>VFX Artist</span></div>
+      <p class="sub">Crafting cinematic visuals that capture attention and tell unforgettable stories.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">View my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="portrait">Your photo or 3D render</div>
+      <div class="chip glass c1"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M16 4v5"/></svg>Premiere Pro</div>
+      <div class="chip glass c2"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>After Effects</div>
+      <div class="chip glass c3"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>Blender</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap"><div class="in about rv">
+  <div class="portrait">Your photo</div>
+  <div>
+    <span class="tag">About me</span>
+    <h2>Stories first. Software second.</h2>
+    <p>I'm a video editor, motion designer and VFX artist. I started cutting videos for fun and now help creators and brands to turn raw footage into work people can't stop watching.<p>
+    <div class="tl">
+      <div><span>2020</span><p>Started editing short-form videos</p></div>
+      <div><span>2022</span><p>Moved into motion graphics and 3D</p></div>
+      <div><span>2024</span><p>Working with brands and agencies</p></div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- SERVICES -->
+<section id="services"><div class="wrap"><div class="in rv">
+  <span class="tag">Services</span><h2>What I do</h2>
+  <p class="lead">From first cut to final delivery, everything your video needs under one roof.</p>
+  <div class="grid g3">
+    <div class="glass lift"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M16 4v5"/></svg><h3>Video Editing</h3><p>Story-led cuts, pacing, sound and colour.</p></div>
+    <div class="glass lift"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg><h3>Motion Graphics</h3><p>Titles, lower thirds and animated explainers.</p></div>
+    <div class="glass lift"><svg class="i" viewBox="0 0 24 24"><path d="M5 19L19 5M14 5h5v5M5 10v4M10 19h4"/></svg><h3>VFX</h3><p>Compositing, clean-up and visual effects.</p></div>
+  </div>
+</div></div></section>
+
+<!-- SKILLS -->
+<section id="skills"><div class="wrap"><div class="in rv" id="skillbox">
+  <span class="tag">Skills and software</span><h2>My toolkit</h2>
+  <p class="lead">The tools I use every day.</p>
+  <div class="glass skills">
+    <div><div class="sk"><span>Premiere Pro</span><span>95%</span></div><div class="bar"><i style="--w:97%"></i></div></div>
+    <div><div class="sk"><span>After Effects</span><span>90%</span></div><div class="bar"><i style="--w:90%"></i></div></div>
+    <div><div class="sk"><span>Nuke</span><span>75%</span></div><div class="bar"><i style="--w:75%"></i></div></div>
+    <div><div class="sk"><span>Maya</span><span>70%</span></div><div class="bar"><i style="--w:70%"></i></div></div>
+    <div><div class="sk"><span>Illustrator</span><span>95%</span></div><div class="bar"><i style="--w:95%"></i></div></div>
+  </div>
+</div></div></section>
+
+<!-- PROJECTS -->
+<section id="work"><div class="wrap"><div class="in">
+  <span class="tag">Featured projects</span><h2>Selected work</h2>
+  <p class="lead">Replace the thumbnails and links with your own projects.</p>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button class="active" data-f="all">All</button><button data-f="shorts">Shorts</button><button data-f="long">Long Form</button><button data-f="motion">Motion Graphics</button><button data-f="3d">3D</button><button data-f="vfx">VFX</button>
+  </div>
+  <div class="grid pgrid">
+    <article class="glass proj lift tilt" data-c="shorts">
+
+    <div class="thumb"
+         style="background-image:url('videos/image1.jpg');
+                background-size:cover;
+                background-position:center;">
+    </div>
+    <div class="pbody">
+        <span class="cat">SHORTS</span>
+
+        <h3>Project Name Two</h3>
+
+        <p>One or two lines on the brief and what you delivered.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>Photoshop</span>
+        </div>
+
+        <a class="btn" href="videos/Landslide.mp4" target="_blank">
+            Watch
+        </a>
+    </div>
+
+</article>
+
+
+<article class="glass proj lift tilt" data-c="shorts">
+    <div class="thumb" style="background-image:url('thumbnails/1.png'); background-size:cover; background-position:center;"></div>
+
+    <div class="pbody">
+        <span class="cat">SHORT FORM</span>
+        <h3>Physiotherapy in 2050</h3>
+        <p>I created a video titled "Physiotherapy in the Year 2050" for a physiotherapy student competition, and I'm happy to share that it was selected.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>After Effects</span>
+        </div>
+
+        <a class="btn" href="https://res.cloudinary.com/ocfi6mjh/video/upload/physiotherapy_Mahek.mp4" target="_blank" rel="noopener noreferrer">
+            Watch
+        </a>
+    </div>
+</article>
+
+
+
+<article class="glass proj lift tilt" data-c="long">
+    <div class="thumb" style="background-image:url('thumbnails/2.png'); background-size:cover; background-position:center;"></div>
+
+    <div class="pbody">
+        <span class="cat">LONG FORM</span>
+        <h3>Kedareshwar Temple</h3>
+        <p>Short-Form Documentary reel exploring the mystery and legends of the Kedareshwar Temple at Harishchandragad Fort.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>After Effects</span>
+        </div>
+
+        <a class="btn" href="https://res.cloudinary.com/ocfi6mjh/video/upload/harish_chandra_fort.mp4" target="_blank" rel="noopener noreferrer">
+            Watch
+        </a>
+    </div>
+</article>
+
+
+<article class="glass proj lift tilt" data-c="long">
+    <div class="thumb" style="background-image:url('thumbnails/3.png'); background-size:cover; background-position:center;"></div>
+
+    <div class="pbody">
+        <span class="cat">Short-Form</span>
+        <h3>Uttarakhand Talent Hunt</h3>
+        <p>A Dynamic recap video featuring performances, celebrity guests, and behind-the-scenes moments from the Uttarakhand Talent Hunt Film Festival.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>After Effects</span>
+        </div>
+
+        <a class="btn" href="https://res.cloudinary.com/ocfi6mjh/video/upload/UK_TALENT_HUNT_day-1.mp4" target="_blank" rel="noopener noreferrer">
+            Watch
+        </a>
+    </div>
+</article>
+
+<article class="glass proj lift tilt" data-c="long">
+    <div class="thumb" style="background-image:url('thumbnails/4.png'); background-size:cover; background-position:center;"></div>
+
+    <div class="pbody">
+        <span class="cat">LONG FORM</span>
+        <h3>Uttarakhand Talent Hunt</h3>
+        <p>A Dynamic recap video featuring performances, celebrity guests, and behind-the-scenes moments from the Uttarakhand Talent Hunt Film Festival.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>After Effects</span>
+        </div>
+
+        <a class="btn" href="https://res.cloudinary.com/ocfi6mjh/video/upload/PACIZON.mp4" target="_blank" rel="noopener noreferrer">
+            Watch
+        </a>
+    </div>
+</article>
+
+
+<article class="glass proj lift tilt" data-c="long">
+    <div class="thumb" style="background-image:url('thumbnails/5.png'); background-size:cover; background-position:center;"></div>
+
+    <div class="pbody">
+        <span class="cat">LONG FORM</span>
+        <h3>Uttarakhand Talent Hunt</h3>
+        <p>A Dynamic recap video featuring performances, celebrity guests, and behind-the-scenes moments from the Uttarakhand Talent Hunt Film Festival.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>After Effects</span>
+        </div>
+
+        <a class="btn" href="https://res.cloudinary.com/ocfi6mjh/video/upload/MAHEK_NAKSHI.mp4" target="_blank" rel="noopener noreferrer">
+            Watch
+        </a>
+    </div>
+</article>
+
+
+<article class="glass proj lift tilt" data-c="long">
+    <div class="thumb" style="background-image:url('thumbnails/2.png'); background-size:cover; background-position:center;"></div>
+
+    <div class="pbody">
+        <span class="cat">LONG FORM</span>
+        <h3>Kedareshwar Temple</h3>
+        <p>Short-Form Documentary reel exploring the mystery and legends of the Kedareshwar Temple at Harishchandragad Fort.</p>
+
+        <div class="sw">
+            <span>Premiere Pro</span>
+            <span>After Effects</span>
+        </div>
+
+        <a class="btn" href="https://res.cloudinary.com/ocfi6mjh/video/upload/Workledger_File.mp4" target="_blank" rel="noopener noreferrer">
+            Watch
+        </a>
+    </div>
+</article>
+
+
+
+  </div>
+</div></div></section>
+
+<!-- WORKFLOW -->
+<section id="workflow"><div class="wrap"><div class="in rv">
+  <span class="tag">Workflow</span><h2>How a project moves</h2>
+  <p class="lead">A clear process so you always know what happens next.</p>
+  <div class="flow">
+    <div class="glass step"><b>01</b><h3>Research</h3></div>
+    <div class="glass step"><b>02</b><h3>Editing</h3></div>
+    <div class="glass step"><b>03</b><h3>Motion Graphics</h3></div>
+    <div class="glass step"><b>04</b><h3>Color Grading</h3></div>
+    <div class="glass step"><b>05</b><h3>Sound Design</h3></div>
+    <div class="glass step"><b>06</b><h3>Final Delivery</h3></div>
+  </div>
+</div></div></section>
+
+<!-- STATS -->
+<section style="padding:0 0 135px"><div class="wrap"><div class="in rv">
+  <div class="glass stats">
+    <div><b>150+</b><span>Projects</span></div>
+    <div><b>40+</b><span>Clients</span></div>
+    <div><b>5,000+</b><span>Hours edited</span></div>
+    <div><b>400+</b><span>Videos delivered</span></div>
+  </div>
+</div></div></section>
+
+<!-- TESTIMONIALS -->
+<section style="padding-top:0"><div class="wrap"><div class="in rv">
+  <span class="tag">Testimonials</span><h2>Kind words</h2>
+  <p class="lead" style="margin-bottom:40px">Replace these with real feedback from your clients.</p>
+  <div class="grid g3">
+    <div class="glass quote"><p>"Fast, clear communication and the final edit was better than we pictured."</p><small>Client name, Company</small></div>
+    <div class="glass quote"><p>"He understood our brand from day one. We now send him every video."</p><small>Client name, Company</small></div>
+    <div class="glass quote"><p>"Great pacing and sound. Our watch time went up after the first edit."</p><small>Client name, Channel</small></div>
+  </div>
+</div></div></section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" style="padding-top:0"><div class="wrap"><div class="in rv">
+  <div class="glass">
+    <h2>Let's create something amazing.</h2>
+    <a class="mail" href="mailto:you@example.com">you@example.com</a>
+    <a class="btn primary" href="mailto:you@example.com">Start a project</a>
+    <div class="socials">
+      <a href="#"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13a3 3 0 016 0v3"/></svg>LinkedIn</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24"><path d="M4 20l1.2-4A8 8 0 1112 20a8 8 0 01-3.800-1z"/></svg>WhatsApp</a>
+    </div>
+  </div>
+</div></div></section>
+</main>
+
+<footer>© 2026 Sambhav Gulani. All rights reserved.</footer>
+
+<script>
+// mouse glow
+const g=document.getElementById('glow');
+addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+// reveal + skill bars
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// project filter
+const btns=document.querySelectorAll('.filters button'),cards=document.querySelectorAll('.proj');
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  cards.forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&!c.dataset.c.split(' ').includes(b.dataset.f)));
+}));
+// subtle card tilt
+if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
+  cards.forEach(c=>{
+    c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      c.style.transform=`perspective(900px) rotateY(${x*5}deg) rotateX(${-y*5}deg) translateY(-6px)`});
+    c.addEventListener('pointerleave',()=>c.style.transform='');
+  });
+}
+</script>
+</body>
+</html>
